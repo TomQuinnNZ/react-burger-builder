@@ -6,10 +6,10 @@ const INGREDIENTS = Object.freeze({
 });
 
 const INGREDIENT_QUANTITIES = Object.freeze({
-    [INGREDIENTS.SALAD]: 1,
-    [INGREDIENTS.CHEESE]: 1,
-    [INGREDIENTS.MEAT]: 1,
-    [INGREDIENTS.BACON]: 1
+    [INGREDIENTS.SALAD]: 0,
+    [INGREDIENTS.CHEESE]: 0,
+    [INGREDIENTS.MEAT]: 0,
+    [INGREDIENTS.BACON]: 0
 })
  
 const INGREDIENT_NAMES = Object.freeze({

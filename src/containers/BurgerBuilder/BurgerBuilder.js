@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import { INGREDIENT_PRICES, BASE_BURGER_PRICE } from '../../util/Constants';
+import { INGREDIENTS, INGREDIENT_PRICES, BASE_BURGER_PRICE, INGREDIENT_QUANTITIES } from '../../util/Constants';
 
 class BurgerBuilder extends Component {
 
     state = {
-        ingredients: {
-            salad: 1,
-            cheese: 1,
-            bacon: 1,
-            meat: 1
-        },
-        // base price is always 4 (defined in util/Constants)
+        // ingredient list and base burger price defined in util/Constants
+        ingredients: INGREDIENT_QUANTITIES,
         totalPrice: BASE_BURGER_PRICE
     }
 
@@ -58,6 +53,7 @@ class BurgerBuilder extends Component {
             ...this.state.ingredients
         };
 
+        // If the quantity of an ingredient is 0, set disabledInfo to true
         for (let ing in disabledInfo) {
             disabledInfo[ing] = disabledInfo[ing] <= 0
         }
@@ -68,10 +64,11 @@ class BurgerBuilder extends Component {
                     ingredients={this.state.ingredients}>
                 </Burger>
                 <BuildControls
-                    ingredients={Object.keys(this.state.ingredients)}
+                    ingredients={Object.values(INGREDIENTS)}
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}>
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice}>
                 </BuildControls>
             </>
         );

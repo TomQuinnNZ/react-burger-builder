@@ -2,16 +2,13 @@ import React from 'react';
 
 import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
+import { stringLiteral } from '@babel/types';
 
-const controls = [
-    {label: 'Salad', type: 'salad'},
-    {label: 'Cheese', type: 'cheese'},
-    {label: 'Bacon', type: 'bacon'},
-    {label: 'Meat', type: 'meat'}
-];
-
-const BuildControls = (props) => (
-    <div className={classes.BuildControls}>
+const BuildControls = (props) => {
+    const controls = props.ingredients.map(ing => (
+        {label: (ing.charAt(0).toUpperCase() + ing.slice(1)), type: ing}));
+    
+    return (<div className={classes.BuildControls}>
         {controls.map(ctrl => (
             <BuildControl 
                 key={ctrl.label}
@@ -19,6 +16,7 @@ const BuildControls = (props) => (
             </BuildControl>
         ))}
     </div>
-);
+    );
+};
 
 export default BuildControls;

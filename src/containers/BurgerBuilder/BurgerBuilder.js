@@ -40,6 +40,26 @@ class BurgerBuilder extends Component {
         this.setState({ingredients: updatedIngredients, totalPrice: updatedPrice});
     }
 
+    removeIngredientHandler = (type) => {
+        // update the number of ingredients based on the ingredient removed.
+        // check that the ingredient quantity doesn't go below 0!
+        let oldCount = this.state.ingredients[type];
+        if (oldCount !== 0) {
+            const updatedCount = oldCount -= 1;
+            const updatedIngredients = {
+                ...this.state.ingredients
+            }
+            updatedIngredients[type] = updatedCount;
+    
+            // update the pricing based on the ingredient added
+            const priceReduction = INGREDIENT_PRICES[type];
+            const oldPrice = this.state.totalPrice;
+            const updatedPrice = oldPrice - priceReduction;
+    
+            this.setState({ingredients: updatedIngredients, totalPrice: updatedPrice});
+        }
+    }
+
     render() {
         return (
             <>
@@ -48,7 +68,8 @@ class BurgerBuilder extends Component {
                 </Burger>
                 <BuildControls
                     ingredients={Object.keys(this.state.ingredients)}
-                    ingredientAdded={this.addIngredientHandler}>
+                    ingredientAdded={this.addIngredientHandler}
+                    ingredientRemoved={this.removeIngredientHandler}>
                 </BuildControls>
             </>
         );

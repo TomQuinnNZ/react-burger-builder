@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-
-const INGREDIENT_PRICES = {
-    // ingredient prices in $
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 2,
-    bacon: 1
-}
+import { INGREDIENT_PRICES, BASE_BURGER_PRICE } from '../../util/Constants';
 
 class BurgerBuilder extends Component {
 
@@ -19,8 +12,8 @@ class BurgerBuilder extends Component {
             bacon: 1,
             meat: 1
         },
-        // base price is always 4 (minimum)
-        totalPrice: 4
+        // base price is always 4 (defined in util/Constants)
+        totalPrice: BASE_BURGER_PRICE
     }
 
     addIngredientHandler = (type) => {
@@ -61,6 +54,14 @@ class BurgerBuilder extends Component {
     }
 
     render() {
+        const disabledInfo = {
+            ...this.state.ingredients
+        };
+
+        for (let ing in disabledInfo) {
+            disabledInfo[ing] = disabledInfo[ing] <= 0
+        }
+        
         return (
             <>
                 <Burger 
@@ -69,7 +70,8 @@ class BurgerBuilder extends Component {
                 <BuildControls
                     ingredients={Object.keys(this.state.ingredients)}
                     ingredientAdded={this.addIngredientHandler}
-                    ingredientRemoved={this.removeIngredientHandler}>
+                    ingredientRemoved={this.removeIngredientHandler}
+                    disabled={disabledInfo}>
                 </BuildControls>
             </>
         );

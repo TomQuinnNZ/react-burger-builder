@@ -1,5 +1,6 @@
 import React from 'react';
 import {INGREDIENT_NAMES} from '../../../util/Constants';
+import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
 
@@ -14,13 +15,18 @@ const orderSummary = (props) => {
     return (
         <>
             <h3>Your order</h3>
-            <p>Your order is ready, with the following ingredients:</p>
+            <p>Your burger is ready, with the following ingredients:</p>
             <ul>
                 {ingredientSummary}
             </ul>
+            <p>The total price will be ${props.price.toFixed(2)}</p>
             <p>Continue to checkout?</p>
-            <button>Cancel</button>
-            <button>Continue</button>
+            <Button
+                btnType="Danger"
+                clicked={props.purchaseCancelled}>Cancel</Button>
+            <Button
+                btnType="Success"
+                clicked={props.purchaseContinued}>Continue</Button>
         </>
     )
 };

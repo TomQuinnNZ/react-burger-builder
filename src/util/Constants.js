@@ -1,29 +1,29 @@
 const INGREDIENTS = Object.freeze({
     SALAD: 'salad',
     CHEESE: 'cheese',
-    MEAT: 'meat',
-    BACON: 'bacon'
+    BACON: 'bacon',
+    MEAT: 'meat'
 });
 
 const INGREDIENT_QUANTITIES = Object.freeze({
     [INGREDIENTS.SALAD]: 0,
     [INGREDIENTS.CHEESE]: 0,
-    [INGREDIENTS.MEAT]: 0,
-    [INGREDIENTS.BACON]: 0
+    [INGREDIENTS.BACON]: 0,
+    [INGREDIENTS.MEAT]: 0
 })
  
 const INGREDIENT_NAMES = Object.freeze({
     [INGREDIENTS.SALAD]: 'Salad',
     [INGREDIENTS.CHEESE]: 'Cheese',
-    [INGREDIENTS.MEAT]: 'Meat',
-    [INGREDIENTS.BACON]: 'Bacon'
+    [INGREDIENTS.BACON]: 'Bacon',
+    [INGREDIENTS.MEAT]: 'Meat'
 });
  
 const INGREDIENT_PRICES = Object.freeze({
-    [INGREDIENTS.SALAD]: 1,
+    [INGREDIENTS.SALAD]: 0.7,
     [INGREDIENTS.CHEESE]: 1,
-    [INGREDIENTS.MEAT]: 2,
-    [INGREDIENTS.BACON]: 1.50
+    [INGREDIENTS.BACON]: 1.50,
+    [INGREDIENTS.MEAT]: 2
 });
  
 const BASE_BURGER_PRICE = 4;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
-import { INGREDIENT_NAMES, INGREDIENT_PRICES } from '../../../util/Constants';
+import { INGREDIENT_NAMES } from '../../../util/Constants';
 
 const BuildControls = (props) => {
 
